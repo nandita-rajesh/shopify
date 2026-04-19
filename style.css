@@ -1,0 +1,492 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: #f8f9fb;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 60px;
+    background: #111;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000; 
+}
+
+nav h1 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+nav input {
+    padding: 8px 12px;
+    width: 220px;
+    border-radius: 20px;
+    border: none;
+    font-size: 13px;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.cart {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#sort {
+    padding: 6px 10px;
+    border-radius: 15px;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    padding: 25px 80px;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+    .product-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .product-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+#filters {
+    display: flex;
+    gap: 12px;
+    margin-left: 80px;
+}
+
+#filters button {
+    background: transparent;
+    color: #bbb;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 0;
+    margin-right: 30px;
+}
+
+#filters button:hover {
+    color: white;
+}
+
+#filters button.active {
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+
+.product {
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.wishlist {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    font-size: 18px;
+    cursor: pointer;
+
+    width: fit-content;
+    height: fit-content;
+
+    display: inline-block;
+    z-index: 10;
+}
+
+.wishlist-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.wishlist-nav {
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.product:hover {
+    transform: translateY(-3px);
+}
+
+.image-box {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.product:hover img {
+    transform: scale(1.05);
+}
+
+.product h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 6px 0 2px;
+}
+
+.product p {
+    font-size: 16px;
+    color: #555;    
+    margin: 0 0 6px;
+}
+
+button {
+    margin-top: 8px;
+    padding: 8px 16px; 
+    font-size: 14px; 
+    border-radius: 18px; 
+    border: none;
+    background: #111;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+button:hover {
+    background: #333;
+}
+
+/* QUANTITY CONTROLS */
+.qty-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6px auto 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    width: 95px;
+    height: 32px;
+    background: white;
+}
+
+.qty-controls svg {
+    display: block;
+}
+
+.qty-controls button {
+    flex: 1;
+    height: 100%;
+
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    margin: 0 0 0 0;
+
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    line-height: 1;  
+    padding: 0; 
+}
+
+.qty-controls button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.qty-controls span {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.qty-controls button:first-child {
+    border-right: 1px solid #eee;
+}
+
+.qty-controls button:last-child {
+    border-left: 1px solid #eee;
+}
+
+.qty-controls button:hover {
+    background: #f2f2f2;
+}
+
+#cart-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100%;
+
+    background: white;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+
+    display: flex;
+    flex-direction: column;
+
+    transition: 0.3s ease;
+    z-index: 1000;
+}
+
+#cart-panel.active {
+    right: 0;
+}
+
+.cart-item {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item-name {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.cart-item-details {
+    font-size: 15px;
+    color: #555;
+    margin: 4px 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.cart-body {
+    flex: 1;   
+    overflow-y: auto;
+    padding: 0 20px;
+}
+
+.cart-header button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: black;
+}
+
+#clear-cart-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    background: rgb(60, 57, 57); 
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#clear-cart-btn:hover {
+    background: rgb(97, 95, 95);
+}
+
+.cart-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    background: white;
+    position: sticky;
+    bottom: 0;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
+}
+
+.cart-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    display: none;
+    z-index: 999;
+}
+
+#overlay.active {
+    display: block;
+}
+
+#toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #111;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.3s ease;
+    z-index: 2000;
+}
+
+#toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#checkout-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    background: #000000;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#checkout-btn:hover {
+    background: #222121;
+}
+
+
+.modal {
+    display: flex;         
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+
+    background: rgba(0,0,0,0.4);
+    z-index: 2000;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: white;
+    width: 420px;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+
+    transform: scale(0.6);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+/*animate*/
+.modal.active .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-content img {
+    width: 220px;
+    margin-bottom: 10px;
+}
+
+.modal-content h2 {
+    margin: 10px 0 5px;
+}
+
+.modal-content p {
+    font-size: 18px;
+    color: #555;
+}
+
+.modal-desc {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0 15px;
+    line-height: 1.4;
+}
+
+.close-btn {
+    cursor: pointer;
+    float: right;
+}
+
+/* blur background when modal open */
+body.modal-open {
+    overflow: hidden;
+}
+
+body.modal-open nav,
+body.modal-open .product-container {
+    filter: blur(4px);
+    transition: 0.3s ease;
+}
+
+#checkout-items {
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 10px 0;
+}
