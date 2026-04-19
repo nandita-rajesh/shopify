@@ -27,6 +27,7 @@ A simple front-end e-commerce application built using HTML, CSS, and JavaScript.
 
 ## Project Structure
 
+```
 shopify/
 ├── index.html
 ├── style.css
@@ -34,3 +35,4 @@ shopify/
 ├── products.json
 ├── images/
 └── icons/
+```
